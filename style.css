@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+}
+.promotion-header {
+    display: flex;
+    width: 100%;          
+    background-color: #90AB8B; 
+}
+
+.header-text {
+    flex: 1;              
+    text-align: center;  
+    padding: 8px;      
+    font-size: 14px;    
+    color: #fff;          
+    margin: 0;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  height: 50px;
+}
+
+.bar {
+  width: 600px;
+  height: 100%;
+  border-radius: 5px 0px 0px 5px;
+  padding-left: 8px;
+  font-family: "Google Sans", sans-serif;
+  border: 2px solid #90AB8B;
+  box-sizing: border-box;
+}
+
+.bar:focus {
+    outline: none;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-left: 120px;
+    padding: 12px;
+    gap: 15px;
+}
+
+.search-button {
+  height: 100%;
+  background-color: #90AB8B;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  padding: 0 12px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.search-button:hover {
+  background-color: #7e9779;
+}
+
+.cart-button,
+.account-button {
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 10px;
+    background-color: transparent;
+    cursor: pointer;   
+    gap: 5px; 
+    border-radius: 10px;
+}
+
+.cart-button:hover,
+.account-button:hover {
+    background-color: rgb(232, 232, 232);
+}
+
+.cart-icon,
+.account-icon {
+    width: 24px;
+    height: 24px;
+}
