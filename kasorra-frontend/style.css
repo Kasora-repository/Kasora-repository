@@ -12,7 +12,7 @@ body {
 .promotion-header {
     display: flex;
     width: 100%;          
-    background-color: #90AB8B; 
+    background: linear-gradient(to right, rgb(144, 171, 139), rgb(90, 120, 99));
 }
 
 .header-text {
@@ -119,7 +119,7 @@ body {
 .ad-section {
     height: 370px;
     width: 100%;
-    background-color: #90AB8B;
+    background: linear-gradient(to right, rgb(144, 171, 139), rgb(90, 120, 99));;
     padding: 48px 0 48px 0;
 }
 
@@ -352,3 +352,19 @@ background-color: rgba(255, 255, 255, 0.625);
     margin-left: 3px;
 }
 
+.deals-container {
+
+}
+
+.indiv-deals {
+    background-color: transparent;
+    width: 240px;
+    padding: 0 0 10px 0;
+
+}
+
+.indiv-pic {
+    height: 260px;
+    width: 100%;
+    padding: 0 0 10px 0;
+}
