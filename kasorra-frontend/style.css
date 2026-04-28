@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    padding-bottom: 200px;
 }
 
 .divider-line {
@@ -318,7 +319,7 @@ background-color: rgba(255, 255, 255, 0.625);
 
 .deals-section {
     background-color: #EBF4DD;
-    height: 500px;
+    height: 480px;
 }
 
 .deals-header-container {
@@ -353,18 +354,122 @@ background-color: rgba(255, 255, 255, 0.625);
 }
 
 .deals-container {
-
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 300px));
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
 
 .indiv-deals {
-    background-color: transparent;
-    width: 240px;
-    padding: 0 0 10px 0;
+    background-color: white;
+    padding: 0 0 20px 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+}
 
+.indiv-pic-container {
+    position: relative;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.indiv-pic-header {
+    display: flex;
+    justify-content: space-between; 
+    gap: 145px;
+    align-items: center;
+    position: absolute;
+    padding: 8px 12px;
+}
+
+.indiv-pic-text {
+    font-size: 12px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #ffffff;
+    background-color: #5A7863;
+    padding: 5px 12px;
+    border-radius: 12px;
+}
+
+.indiv-pic-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #ffffff;
+    background-color: rgba(44, 44, 44, 0.69);
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.star-icon {
+    height: 12px;
+    width: 12px;
 }
 
 .indiv-pic {
-    height: 260px;
     width: 100%;
-    padding: 0 0 10px 0;
+    height: 200px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border-radius: 20px 20px 0 0; 
 }
+
+
+.indiv-container {
+    margin: 20px 20px 0 20px;
+    display: grid;
+    grid-template-rows:repeat(3, auto);
+    row-gap: 10px;
+    text-align: left;
+}
+
+.indiv-header {
+    font-size: 19px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #3B4953;
+}
+
+.indiv-subheader {
+    font-size: 14px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color:gray;
+}
+
+.indiv-price {
+    font-size: 16px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #90AB8B;
+}
+
+.indiv-sold {
+    font-size: 12px;
+}
+
+.price-sold {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    align-items: center;
+}
+
+.view-supplier {
+    display: flex;
+    font-size: 15px;
+    border-radius: 10px;
+    justify-content: center;
+    color: white;
+    padding: 10px;
+    background-color: #90AB8B;
+}
+
+.view-supplier:hover {
+    background-color: #90ab8bb8
+}
+
+.indiv-deals:hover {
+    box-shadow: 4px 6px 10px rgba(95, 94, 94, 0.474);
+}
+
