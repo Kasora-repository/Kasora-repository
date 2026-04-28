@@ -7,13 +7,16 @@ const supabase = createClient(
     process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-// Validation rules for registration
 const registerValidations = [
     body('email')
         .isEmail().withMessage('Email must be valid')
         .normalizeEmail(),
     body('password')
-        .isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
+        .isLength({ min: 8 }).withMessage('Password must be at least 8 characters')
+        .matches(/[a-z]/).withMessage('Password must contain a lowercase letter')
+        .matches(/[A-Z]/).withMessage('Password must contain a uppercase letter')
+        .matches(/[0-9]/).withMessage('Password must contain a number')
+        .matches(/[^A-Za-z0-9]/).withMessage('Password must contain a special character'),
     body('role')
         .isIn(['supplier', 'buyer']).withMessage('Role must be supplier or buyer'),
     body('business_name')
