@@ -97,13 +97,12 @@ const register = async (req, res) => {
         });
     } catch (error) {
         console.error('Registration error:', error);
-        if (error.code === '23505') {
-            return res.status(409).json({ 
-                error: 'Email already registered' 
-            });
+        if (error.status === 409 || error.message.includes('already been registered')) {
+            return res.status(409).json({ error: 'Email already registered' });
         }
         res.status(500).json({ error: 'Registration failed' });
     }
+
 };
 
 // Get current user
