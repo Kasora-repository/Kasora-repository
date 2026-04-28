@@ -10,12 +10,21 @@ const checkVerification = (requiredStatus = 'verified') => {
                 });
             }
             if (requiredStatus === 'fully_verified') {
-                const table = user.role === 'supplier' ? 'supplier_profiles' : 'business_profiles';
+                const TABLE_MAP = {
+                    supplier: 'supplier_profiles',
+                    buyer: 'business_profiles'
+                };
+                const table = TABLE_MAP[user.role];
+                if (!table) {
+                    return res.status(400).json({ error: 'Invalid role' });
+                }
+                // Use parameterized query with table name safely set
                 const profileResult = await db.query(
                     `SELECT is_fully_verified, can_list_products, can_place_orders 
-                     FROM ${table} WHERE user_id = $1`,
+                    FROM ${table} WHERE user_id = $1`,
                     [user.id]
                 );
+
                 
                 if (profileResult.rows.length === 0 || !profileResult.rows[0].is_fully_verified) {
                     return res.status(403).json({ 

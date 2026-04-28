@@ -16,8 +16,6 @@ const registerValidations = [
         .matches(/[a-z]/).withMessage('Password must contain a lowercase letter')
         .matches(/[A-Z]/).withMessage('Password must contain a uppercase letter')
         .matches(/[0-9]/).withMessage('Password must contain a number')
-        .matches(/[^A-Za-z0-9]/).withMessage('Password must contain a special character'),
-    body('role')
         .isIn(['supplier', 'buyer']).withMessage('Role must be supplier or buyer'),
     body('business_name')
         .optional()
@@ -97,9 +95,10 @@ const register = async (req, res) => {
         });
     } catch (error) {
         console.error('Registration error:', error);
-        if (error.status === 409 || error.message.includes('already been registered')) {
+        if (error.code === '23505') {
             return res.status(409).json({ error: 'Email already registered' });
         }
+
         res.status(500).json({ error: 'Registration failed' });
     }
 
