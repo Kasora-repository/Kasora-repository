@@ -3,6 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const morgan = require('morgan');
+const crypto = require('crypto');
 
 const authRoutes = require('./src/routes/auth');
 const supplierRoutes = require('./src/routes/suppliers');
@@ -15,6 +17,15 @@ const locationRoutes = require('./src/routes/location');
 const errorMiddleware = require('./src/middleware/error');
 
 const app = express();
+
+// Request logging (Morgan) - logs all HTTP requests
+app.use(morgan('dev'));
+
+// Generate unique request ID for tracing
+app.use((req, res, next) => {
+    req.id = crypto.randomUUID();
+    next();
+});
 
 app.use(helmet());
 app.use(cors({

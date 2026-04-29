@@ -1,5 +1,6 @@
 const { createClient } = require('@supabase/supabase-js');
 const db = require('../config/database');
+const { errors } = require('../utils/errorFormatter');
 
 const supabase = createClient(
     process.env.SUPABASE_URL,
@@ -11,14 +12,14 @@ const authenticate = async (req, res, next) => {
         const authHeader = req.headers.authorization;
         
         if (!authHeader || !authHeader.startsWith('Bearer ')) {
-            return res.status(401).json({ error: 'No token provided' });
+            return res.status(401).json(errors.unauthorized('No token provided'));
         }
 
         const token = authHeader.substring(7);
         const { data: { user }, error } = await supabase.auth.getUser(token);
 
         if (error || !user) {
-            return res.status(401).json({ error: 'Invalid token' });
+            return res.status(401).json(errors.unauthorized('Invalid token'));
         }
 
         const result = await db.query(
@@ -27,14 +28,14 @@ const authenticate = async (req, res, next) => {
         );
 
         if (result.rows.length === 0) {
-            return res.status(404).json({ error: 'User not found in system' });
+            return res.status(404).json(errors.notFound('User not found in system'));
         }
 
         req.user = result.rows[0];
         next();
     } catch (error) {
         console.error('Auth error:', error);
-        res.status(500).json({ error: 'Authentication failed' });
+        res.status(500).json(errors.server('Authentication failed'));
     }
 };
 

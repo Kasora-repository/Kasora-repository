@@ -1,6 +1,7 @@
 const db = require('../config/database');
 const { createClient } = require('@supabase/supabase-js');
 const { body, validationResult } = require('express-validator');
+const { errors } = require('../utils/errorFormatter');
 
 const supabase = createClient(
     process.env.SUPABASE_URL,
@@ -15,7 +16,8 @@ const registerValidations = [
         .isLength({ min: 8 }).withMessage('Password must be at least 8 characters')
         .matches(/[a-z]/).withMessage('Password must contain a lowercase letter')
         .matches(/[A-Z]/).withMessage('Password must contain a uppercase letter')
-        .matches(/[0-9]/).withMessage('Password must contain a number')
+        .matches(/[0-9]/).withMessage('Password must contain a number'),
+    body('role')
         .isIn(['supplier', 'buyer']).withMessage('Role must be supplier or buyer'),
     body('business_name')
         .optional()
@@ -24,24 +26,18 @@ const registerValidations = [
         .trim()
 ];
 
-// Middleware to check validation results
 const validate = (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({
-            error: 'Validation failed',
-            details: errors.array()
-        });
+    const errorsResult = validationResult(req);
+    if (!errorsResult.isEmpty()) {
+        return res.status(400).json(errors.validation(errorsResult.array()));
     }
     next();
 };
 
-// Register user
 const register = async (req, res) => {
     try {
         const { email, password, role, ...profileData } = req.body;
         
-        // Create Supabase auth user
         const { data: authUser, error: authError } = await supabase.auth.admin.createUser({
             email,
             password,
@@ -49,21 +45,14 @@ const register = async (req, res) => {
         });
         
         if (authError) {
-            // Check for duplicate email error from Supabase
             if (authError.message.includes('already been registered') ||
                 authError.message.includes('duplicate key') ||
                 authError.message.includes('already exists')) {
-                return res.status(409).json({
-                    error: 'Email already registered'
-                });
+                return res.status(409).json(errors.conflict('Email already registered'));
             }
-            return res.status(400).json({
-                error: 'Failed to create auth user',
-                details: authError.message
-            });
+            return res.status(400).json(errors.badRequest('Failed to create auth user', authError.message));
         }
         
-        // Create local user record
         const result = await db.query(
             'INSERT INTO users (supabase_uid, email, role) VALUES ($1, $2, $3) RETURNING id, email, role, is_verified',
             [authUser.user.id, email, role]
@@ -71,7 +60,6 @@ const register = async (req, res) => {
         
         const user = result.rows[0];
         
-        // Create role-specific profile
         if (role === 'supplier') {
             await db.query(
                 'INSERT INTO supplier_profiles (user_id, business_name) VALUES ($1, $2)',
@@ -85,6 +73,7 @@ const register = async (req, res) => {
         }
         
         res.status(201).json({
+            success: true,
             message: 'User registered successfully',
             user: { 
                 id: user.id, 
@@ -96,15 +85,12 @@ const register = async (req, res) => {
     } catch (error) {
         console.error('Registration error:', error);
         if (error.code === '23505') {
-            return res.status(409).json({ error: 'Email already registered' });
+            return res.status(409).json(errors.conflict('Email already registered'));
         }
-
-        res.status(500).json({ error: 'Registration failed' });
+        res.status(500).json(errors.server('Registration failed', error.message));
     }
-
 };
 
-// Get current user
 const getMe = async (req, res) => {
     try {
         const result = await db.query(
@@ -129,10 +115,14 @@ const getMe = async (req, res) => {
             profile = profileResult.rows[0];
         }
         
-        res.json({ user, profile });
+        res.json({
+            success: true,
+            user,
+            profile
+        });
     } catch (error) {
         console.error('Get user error:', error);
-        res.status(500).json({ error: 'Failed to fetch user' });
+        res.status(500).json(errors.server('Failed to fetch user'));
     }
 };
 
