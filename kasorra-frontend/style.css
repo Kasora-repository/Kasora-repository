@@ -1,6 +1,17 @@
 body {
     margin: 0;
-    background-color: rgba(255, 254, 254, 0.671);
+    background-color: rgb(255, 254, 254);
+    min-height: 100vh;   
+}
+
+body.blur-active > *:not(.acc_bg) {
+  filter: blur(6px);
+  pointer-events: none; /* prevents clicking background */
+}
+
+body.no-scroll {
+    overflow: hidden;
+    height: 100%;
 }
 
 .divider-line {
@@ -489,7 +500,7 @@ background-color: rgba(255, 255, 255, 0.625);
     font-size: 16px;
     font-weight: bold;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #90AB8B;
+    color: #2a801a;
 }
 
 .indiv-sold {
@@ -724,9 +735,55 @@ background-color: rgba(255, 255, 255, 0.625);
     color: rgb(235, 244, 221);
     opacity: 0.7;
 }
-/*
-.indiv-deals:hover {
-    box-shadow: 4px 6px 10px rgba(95, 94, 94, 0.474);
-}
-    */
 
+.acc_bg {
+    position: fixed;
+    top: 100px;
+    left: 500px;
+    z-index: 1000;
+    height: 650px;
+    width: 500px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.login_header {
+    position: absolute;   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.exit_button {
+    top: 20px;
+    left: 88%;
+    font-size: 25px;
+    position: absolute;
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: transparent;
+    border: none;
+}
+
+.form_tag {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input_tag {
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    width: 250px;
+    padding: 10px 50px 10px 5px;
+}
