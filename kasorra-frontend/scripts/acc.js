@@ -84,7 +84,11 @@ function handle_login(event){
     const password = form.password.value;
 
     if (email === "" || password === "") {
-        alert("Please fill in all fields.");
+        let error_container = document.createElement('div');
+        error_container.className = "error_container";
+
+        let error_message = document.createElement('p');
+        error_message.textContent = "Please Fill in all the fields."
         return;
     }
 
