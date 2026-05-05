@@ -21,6 +21,18 @@ body.no-scroll {
     margin: 2px; 
 }
 
+.signUp_header {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 460px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #5555558e;
+    font-size: 14px;
+}
+
+
 .promotion-header {
     display: flex;
     width: 100%;          
@@ -755,10 +767,8 @@ background-color: rgba(255, 255, 255, 0.625);
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 100px;
-    left: 50%;
+    top: 80px;
     color: rgb(95, 94, 94);
-    transform: translateX(-50%);
     font-size: 30px;
     font-weight: 650;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -769,10 +779,8 @@ background-color: rgba(255, 255, 255, 0.625);
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 155px;
-    left: 50%;
+    top: 140px;
     color: rgb(95, 94, 94);
-    transform: translateX(-50%);
     font-size: 15px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -782,7 +790,7 @@ background-color: rgba(255, 255, 255, 0.625);
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 210px;
+    top: 190px;
     left: 30%;
     color: rgb(87, 87, 87);
     transform: translateX(-50%);
@@ -796,7 +804,7 @@ background-color: rgba(255, 255, 255, 0.625);
     display: flex;
     align-items: center;
     justify-self: center;
-    top: 297px;
+    top: 278px;
     left: 23%;
     color: rgb(87, 87, 87);
     transform: translateX(-50%);
@@ -833,6 +841,12 @@ background-color: rgba(255, 255, 255, 0.625);
     border: 2px solid #a2d09a;
 }
 
+
+/*.input_icon {
+    height: 20px;
+    width: 20px;
+} */
+
 .submit_button {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 17px;
@@ -853,17 +867,78 @@ background-color: rgba(255, 255, 255, 0.625);
     display: flex;
     flex-direction: column;
     gap: 40px;
-    margin-top: 60px;
+    margin-top: 20px;
 }
 
 .lock-icon {
     position: absolute;
+    display: flex;
+    justify-content: center;
     z-index: 1000;
-    left: 44%;
-    top: 50px;
+    top: 35px;
     height: 40px;
     width: 40px;
     background: linear-gradient(to right, rgb(144, 171, 139), rgb(90, 120, 99));
     padding: 10px;
     border-radius: 12px;
 }
+
+.thirdParty_container {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: 510px;
+}
+
+.google_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 4px 70px;
+    height: 45px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #90AB8B;
+    border-radius: 10px;
+}
+
+.google_button:hover {
+    background-color: rgba(220, 220, 220, 0.332);
+}
+
+.google_icon {
+    height: 20px;
+    width: 20px;
+}
+
+.no_acc_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 570px;
+    gap: 7px;
+}
+
+.no_acc {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+}
+
+.sign_up {
+    text-decoration: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    color: #90AB8B;
+}
+
+.sign_up:hover {
+    text-decoration: underline;
+}
+
+

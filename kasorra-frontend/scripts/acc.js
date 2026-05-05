@@ -1,3 +1,5 @@
+const { createElement } = require("react");
+
 function acc_button() {
     if (document.querySelector(".acc_bg")) {
         return;
@@ -36,6 +38,14 @@ function acc_button() {
     email_header.className = "email_header";
     email_header.textContent = "Email or Username";
 
+    /*let email_icon = document.createElement('img');
+    email_icon.src = "images/mail.png";
+    email_icon.className = "input_icon"; 
+
+    let email_text = document.createElement('p');
+    email_text.className = "input_text";
+    email_text.textContent = "Enter your username or email"; */
+
     let email = document.createElement('input');
     email.type = "text";
     email.name = "email";
@@ -45,6 +55,10 @@ function acc_button() {
     let password_header = document.createElement('p');
     password_header.className = "password_header";
     password_header.textContent = "Password";
+
+    /*let password_icon = document.createElement('img');
+    password_icon.src = "images/lock4.png";
+    password_icon.className = "input_icon"; */
 
     let password = document.createElement('input');
     password.type = "password";
@@ -56,6 +70,45 @@ function acc_button() {
     submit.textContent = "Sign In";
     submit.value = "Log In";
     submit.className = "submit_button";
+
+    let signUp_header = document.createElement('p');
+    signUp_header.className = "signUp_header";
+    signUp_header.textContent = "-----------  or continue with  -----------";
+
+    let thirdParty_container = document.createElement('div');
+    thirdParty_container.className = "thirdParty_container";
+
+    let google_icon = document.createElement('img');
+    google_icon.src = "images/google.png";
+    google_icon.className = "google_icon";
+
+    let google_button = document.createElement('button');
+    google_button.className = "google_button";
+
+    google_button.appendChild(google_icon);
+
+    let google_text = document.createElement('p');
+    google_text.className = "google_text";
+    google_text.textContent ="Google";
+
+    google_button.appendChild(google_text);
+
+    thirdParty_container.appendChild(google_button);
+
+    let no_acc_container = document.createElement('div');
+    no_acc_container.className = "no_acc_container";
+
+    let no_acc = document.createElement('p');
+    no_acc.className = "no_acc";
+    no_acc.textContent = "Don't have an account? ";
+
+    let sign_up = document.createElement('a');
+    sign_up.className = "sign_up";
+    sign_up.textContent = "Sign up";
+    sign_up.href = ""; //link the other page here for sign up
+
+    no_acc_container.appendChild(no_acc);
+    no_acc_container.appendChild(sign_up);
 
     input_container.appendChild(email);
     input_container.appendChild(password);
@@ -69,7 +122,10 @@ function acc_button() {
     bg.appendChild(login_header);
     bg.appendChild(login_subheader);
     bg.appendChild(exit);
+    bg.appendChild(signUp_header);
     bg.appendChild(form);
+    bg.appendChild(thirdParty_container);
+    bg.appendChild(no_acc_container);
 
     document.body.appendChild(bg);
 
@@ -83,7 +139,7 @@ function handle_login(event){
     const email = form.email.value;
     const password = form.password.value;
 
-    if (email === "" || password === "") {
+    if (email.trim() === "" || password.trim() === "") {
         let error_container = document.createElement('div');
         error_container.className = "error_container";
 
@@ -94,7 +150,6 @@ function handle_login(event){
 
     // Here you’d send data to backend/database
     console.log("Sending:", { email, password });
-
 }
 
 function close_overlay(){
