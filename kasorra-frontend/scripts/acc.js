@@ -105,7 +105,7 @@ function acc_button() {
     let sign_up = document.createElement('a');
     sign_up.className = "sign_up";
     sign_up.textContent = "Sign up";
-    sign_up.href = ""; //link the other page here for sign up
+    sign_up.href = "sign_up.html"; //link the other page here for sign up
 
     no_acc_container.appendChild(no_acc);
     no_acc_container.appendChild(sign_up);
