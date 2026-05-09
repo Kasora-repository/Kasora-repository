@@ -160,6 +160,5 @@ function close_overlay(){
 }
 
 function open_cart(){
-    let cart = document.querySelector('.cart-button');
-    cart.href="cart-page.html";
+    window.location.href = "cart-page.html";
 }
