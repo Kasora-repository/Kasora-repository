@@ -102,10 +102,11 @@ function acc_button() {
     no_acc.className = "no_acc";
     no_acc.textContent = "Don't have an account? ";
 
-    let sign_up = document.createElement('a');
+    let sign_up = document.createElement('button');
     sign_up.className = "sign_up";
     sign_up.textContent = "Sign up";
-    sign_up.href = "sign_up.html"; //link the other page here for sign up
+
+    sign_up.addEventListener("click", signUp_overlay);
 
     no_acc_container.appendChild(no_acc);
     no_acc_container.appendChild(sign_up);
@@ -161,4 +162,14 @@ function close_overlay(){
 
 function open_cart(){
     window.location.href = "cart-page.html";
+}
+
+function signUp_overlay(){
+    const logIn_overlay = document.querySelector('.acc_bg');
+    if (logIn_overlay) logIn_overlay.remove();
+
+    let bg = document.createElement('div');
+    bg.className = "signUp_bg";
+
+    document.body.appendChild(bg);
 }
