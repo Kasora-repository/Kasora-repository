@@ -197,6 +197,9 @@ function signUp_overlay(){
     direction.className = "direction-text";
     direction.textContent = "I want to";
 
+    let button_container = document.createElement('div');
+    button_container.className = "button_container";
+
     let buy = document.createElement('button');
     buy.className = "buy-btn";
 
@@ -205,16 +208,38 @@ function signUp_overlay(){
     buy_icon.className = "buy_icon";
 
     let buy_header = document.createElement('span');
-    buy_header.className = "buy_header";
+    buy_header.className = "sb_header";
     buy_header.textContent = "Buy Products";
 
     let buy_subheader = document.createElement('span');
-    buy_subheader.className = "buy_subheader";
-    buy_subheader.textContent = "Source From Suppliers"
+    buy_subheader.className = "sb_subheader";
+    buy_subheader.textContent = "Source From Suppliers";
+
+    let sell = document.createElement('button');
+    sell.className = "sell-btn";
+
+    let sell_icon = document.createElement('img');
+    sell_icon.src = "images/buildings.png";
+    sell_icon.className = "sell_icon";
+
+    let sell_header = document.createElement('span');
+    sell_header.className = "sb_header";
+    sell_header.textContent = "Sell Products";
+
+    let sell_subheader = document.createElement('span');
+    sell_subheader.className = "sb_subheader";
+    sell_subheader.textContent = "Become a supplier";
 
     buy.appendChild(buy_icon);
     buy.appendChild(buy_header);
     buy.appendChild(buy_subheader);
+
+    sell.appendChild(sell_icon);
+    sell.appendChild(sell_header);
+    sell.appendChild(sell_subheader);
+
+    button_container.appendChild(buy);
+    button_container.appendChild(sell);
 
     let form = document.createElement('form');
     form.className = "form-container";
@@ -224,7 +249,7 @@ function signUp_overlay(){
     container.appendChild(login_subheader);
     container.appendChild(exit);
     container.appendChild(direction);
-    container.appendChild(buy);
+    container.appendChild(button_container);
 
     bg.appendChild(container);
 
