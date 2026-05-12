@@ -131,7 +131,6 @@ function acc_button() {
     document.body.appendChild(bg);
 
     document.body.classList.add("no-scroll");
-    document.body.classList.add("blur-active");
 }
 
 function handle_login(event){
@@ -154,10 +153,13 @@ function handle_login(event){
 }
 
 function close_overlay(){
-    const overlay = document.querySelector('.acc_bg');
-    if (overlay) overlay.remove();
+    const overlay_signIn = document.querySelector('.acc_bg');
+    const overlay_signUp = document.querySelector('.signUp_bg');
+
+    if (overlay_signIn) overlay_signIn.remove();
+    if (overlay_signUp) overlay_signUp.remove();
+
     document.body.classList.remove("no-scroll");
-    document.body.classList.remove("blur-active");
 }
 
 function open_cart(){
@@ -170,6 +172,61 @@ function signUp_overlay(){
 
     let bg = document.createElement('div');
     bg.className = "signUp_bg";
+
+    let container = document.createElement('div');
+    container.className = "signUp_container";
+
+    let lock = document.createElement('img');
+    lock.src = "images/person.png";
+    lock.className = "person-icon";
+
+    let login_header = document.createElement('p');
+    login_header.className = "login_header";
+    login_header.textContent = "Create Account";
+
+    let login_subheader = document.createElement('p');
+    login_subheader.className = "login_subheader";
+    login_subheader.textContent = "Join thousands of businesses on our platform";
+
+    let exit = document.createElement('button');
+    exit.className = "exit_button2";
+    exit.textContent = "x";
+    exit.onclick = close_overlay;
+
+    let direction = document.createElement('p');
+    direction.className = "direction-text";
+    direction.textContent = "I want to";
+
+    let buy = document.createElement('button');
+    buy.className = "buy-btn";
+
+    let buy_icon = document.createElement('img');
+    buy_icon.src = "images/cartss.png";
+    buy_icon.className = "buy_icon";
+
+    let buy_header = document.createElement('span');
+    buy_header.className = "buy_header";
+    buy_header.textContent = "Buy Products";
+
+    let buy_subheader = document.createElement('span');
+    buy_subheader.className = "buy_subheader";
+    buy_subheader.textContent = "Source From Suppliers"
+
+    buy.appendChild(buy_icon);
+    buy.appendChild(buy_header);
+    buy.appendChild(buy_subheader);
+
+    let form = document.createElement('form');
+    form.className = "form-container";
+
+    container.appendChild(lock);
+    container.appendChild(login_header);
+    container.appendChild(login_subheader);
+    container.appendChild(exit);
+    container.appendChild(direction);
+    container.appendChild(buy);
+
+    bg.appendChild(container);
 
     document.body.appendChild(bg);
 }
