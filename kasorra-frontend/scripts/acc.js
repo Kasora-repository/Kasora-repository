@@ -111,10 +111,10 @@ function acc_button() {
     no_acc_container.appendChild(no_acc);
     no_acc_container.appendChild(sign_up);
 
-    input_container.appendChild(email);
-    input_container.appendChild(password);
     input_container.appendChild(email_header);
+    input_container.appendChild(email);
     input_container.appendChild(password_header);
+    input_container.appendChild(password);
 
     form.appendChild(input_container);
     form.appendChild(submit);
@@ -148,6 +148,9 @@ function handle_login(event){
         return;
     }
 
+    error_container.appendChild(error_message);
+    form.appendChild(error_container);
+
     // Here you’d send data to backend/database
     console.log("Sending:", { email, password });
 }
@@ -176,6 +179,9 @@ function signUp_overlay(){
     let container = document.createElement('div');
     container.className = "signUp_container";
 
+    let replaceable_container = document.createElement('div');
+    replaceable_container.className = "replaceable_container";
+
     let lock = document.createElement('img');
     lock.src = "images/person.png";
     lock.className = "person-icon";
@@ -202,6 +208,7 @@ function signUp_overlay(){
 
     let buy = document.createElement('button');
     buy.className = "buy-btn";
+    buy.onclick = () => buyer_option(replaceable_container);
 
     let buy_icon = document.createElement('img');
     buy_icon.src = "images/cartss.png";
@@ -217,6 +224,7 @@ function signUp_overlay(){
 
     let sell = document.createElement('button');
     sell.className = "sell-btn";
+    sell.onclick = () => seller_option(replaceable_container);
 
     let sell_icon = document.createElement('img');
     sell_icon.src = "images/buildings.png";
@@ -231,7 +239,7 @@ function signUp_overlay(){
     sell_subheader.textContent = "Become a supplier";
 
     buy.appendChild(buy_icon);
-    buy.appendChild(buy_header);
+    buy.appendChild(buy_header);w
     buy.appendChild(buy_subheader);
 
     sell.appendChild(sell_icon);
@@ -254,4 +262,16 @@ function signUp_overlay(){
     bg.appendChild(container);
 
     document.body.appendChild(bg);
+}
+
+function buyer_option(replaceable_container){
+    let firstName_header = document.createElement('span');
+    firstName_header.className = "firstName_header";
+    firstName_header.textContent = "First Name";
+
+    container.appendChild(firstName_header);
+}
+
+function seller_option(replaceable_container){
+
 }
