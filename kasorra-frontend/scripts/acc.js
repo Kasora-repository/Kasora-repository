@@ -105,7 +105,7 @@ function acc_button() {
     let sign_up = document.createElement('button');
     sign_up.className = "sign_up";
     sign_up.textContent = "Sign up";
-
+    
     sign_up.addEventListener("click", signUp_overlay);
 
     no_acc_container.appendChild(no_acc);
@@ -133,7 +133,7 @@ function acc_button() {
     document.body.classList.add("no-scroll");
 }
 
-function handle_login(event){
+function handle_login(event) { 
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
@@ -155,7 +155,7 @@ function handle_login(event){
     console.log("Sending:", { email, password });
 }
 
-function close_overlay(){
+function close_overlay() {
     const overlay_signIn = document.querySelector('.acc_bg');
     const overlay_signUp = document.querySelector('.signUp_bg');
 
@@ -239,7 +239,7 @@ function signUp_overlay(){
     sell_subheader.textContent = "Become a supplier";
 
     buy.appendChild(buy_icon);
-    buy.appendChild(buy_header);w
+    buy.appendChild(buy_header);
     buy.appendChild(buy_subheader);
 
     sell.appendChild(sell_icon);
@@ -258,20 +258,64 @@ function signUp_overlay(){
     container.appendChild(exit);
     container.appendChild(direction);
     container.appendChild(button_container);
+    container.appendChild(replaceable_container);
 
     bg.appendChild(container);
 
     document.body.appendChild(bg);
 }
 
-function buyer_option(replaceable_container){
+function buyer_option(replaceable_container) {
+    replaceable_container.innerHTML = "";
+
     let firstName_header = document.createElement('span');
-    firstName_header.className = "firstName_header";
+    firstName_header.className = "Name_header_option";
     firstName_header.textContent = "First Name";
 
-    container.appendChild(firstName_header);
+    let lastName_header = document.createElement('span');
+    lastName_header.className = "Name_header_option";
+    lastName_header.textContent = "Last Name";
+
+    let form = document.createElement('form');
+    form.className = "buyer_option_form";
+    form.onsubmit = handle_buyer_signUp; //for later
+
+    let firstName_input = document.createElement('input');
+    firstName_input.className = "buyer_option_Name_input";
+    firstName_input.type = "text";
+    firstName_input.placeholder = "Enter your First Name";
+
+    let lastName_input = document.createElement('input');
+    lastName_input.className = "buyer_option_Name_input";
+    lastName_input.type = "text";
+    lastName_input.placeholder = "Enter your Last Name";
+
+    let firstName_wrapper = document.createElement('div');
+    firstName_wrapper.className = "Names_signUp_wrapper";
+
+    firstName_wrapper.appendChild(firstName_header);
+    firstName_wrapper.appendChild(firstName_input);
+
+    let lastName_wrapper = document.createElement('div');
+    lastName_wrapper.className = "Names_signUp_wrapper";
+
+    lastName_wrapper.appendChild(lastName_header);
+    lastName_wrapper.appendChild(lastName_input);
+
+    form.appendChild(firstName_wrapper);
+    form.appendChild(lastName_wrapper);
+
+    replaceable_container.appendChild(form);
 }
 
-function seller_option(replaceable_container){
+function seller_option(replaceable_container) {
+
+}
+
+function handle_buyer_signUp() {
+
+}
+
+function handle_supplier_signUp() {
 
 }
