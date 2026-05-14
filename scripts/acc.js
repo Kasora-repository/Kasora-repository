@@ -269,11 +269,11 @@ function buyer_option(replaceable_container) {
     replaceable_container.innerHTML = "";
 
     let firstName_header = document.createElement('span');
-    firstName_header.className = "Name_header_option";
+    firstName_header.className = "name_header_option";
     firstName_header.textContent = "First Name";
 
     let lastName_header = document.createElement('span');
-    lastName_header.className = "Name_header_option";
+    lastName_header.className = "name_header_option";
     lastName_header.textContent = "Last Name";
 
     let form = document.createElement('form');
@@ -286,7 +286,7 @@ function buyer_option(replaceable_container) {
     firstName_input.placeholder = "Enter your First Name";
 
     let lastName_input = document.createElement('input');
-    lastName_input.className = "buyer_option_Name_input";
+    lastName_input.className = "seller_option_Name_input";
     lastName_input.type = "text";
     lastName_input.placeholder = "Enter your Last Name";
 
@@ -302,10 +302,15 @@ function buyer_option(replaceable_container) {
     lastName_wrapper.appendChild(lastName_header);
     lastName_wrapper.appendChild(lastName_input);
 
+    let option_outer_container = document.createElement('div');
+    option_outer_container.className = "option_outer_container";
+
     form.appendChild(firstName_wrapper);
     form.appendChild(lastName_wrapper);
 
-    replaceable_container.appendChild(form);
+    option_outer_container.appendChild(form)
+
+    replaceable_container.appendChild(option_outer_container);
 }
 
 function seller_option(replaceable_container) {
