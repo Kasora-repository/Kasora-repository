@@ -459,6 +459,22 @@ function seller_option(replaceable_container) {
     phone_container.appendChild(phone_header);
     phone_container.appendChild(phone_input);
 
+    let company_name_container = document.createElement('div');
+    company_name_container.className = "company_name_container";
+
+    let company_name = document.createElement('span');
+    company_name.className = "option_company_name";
+    company_name.textContent = "Company Name";
+
+    let company_name_input = document.createElement('input');
+    company_name_input.type = "text";
+    company_name_input.className = "option_company_name_input";
+    company_name_input.placeholder = "Your Company Name";
+
+    company_name_container.appendChild(company_name);
+    company_name_container.appendChild(company_name_input);
+
+
     let password_container = document.createElement('div');
     password_container.className = "option_password_container";
 
@@ -492,6 +508,7 @@ function seller_option(replaceable_container) {
     form.appendChild(name_wrapper);
     form.appendChild(email_container);
     form.appendChild(phone_container);
+    form.appendChild(company_name_container);
     form.appendChild(password_container);
     form.appendChild(password_container_confirm);
 
