@@ -384,6 +384,120 @@ function buyer_option(replaceable_container) {
 
 function seller_option(replaceable_container) {
     replaceable_container.innerHTML = "";
+
+
+    let firstName_header = document.createElement('span');
+    firstName_header.className = "name_header_option";
+    firstName_header.textContent = "First Name";
+
+    let lastName_header = document.createElement('span');
+    lastName_header.className = "name_header_option";
+    lastName_header.textContent = "Last Name";
+
+    let form = document.createElement('form');
+    form.className = "buyer_option_form";
+    form.onsubmit = handle_buyer_signUp; //for later
+
+    let firstName_input = document.createElement('input');
+    firstName_input.className = "buyer_option_Name_input";
+    firstName_input.type = "text";
+    firstName_input.placeholder = "Enter your First Name";
+
+    let lastName_input = document.createElement('input');
+    lastName_input.className = "seller_option_Name_input";
+    lastName_input.type = "text";
+    lastName_input.placeholder = "Enter your Last Name";
+
+    let firstName_wrapper = document.createElement('div');
+    firstName_wrapper.className = "Names_signUp_wrapper";
+
+    firstName_wrapper.appendChild(firstName_header);
+    firstName_wrapper.appendChild(firstName_input);
+
+    let lastName_wrapper = document.createElement('div');
+    lastName_wrapper.className = "Names_signUp_wrapper";
+
+    lastName_wrapper.appendChild(lastName_header);
+    lastName_wrapper.appendChild(lastName_input);
+
+    let name_wrapper = document.createElement('div');
+    name_wrapper.className = "option_name_wrapper";
+
+    name_wrapper.appendChild(firstName_wrapper);
+    name_wrapper.appendChild(lastName_wrapper);
+
+    let option_outer_container = document.createElement('div');
+    option_outer_container.className = "option_outer_container";
+
+    let email_container = document.createElement('div');
+    email_container.className = "option_email_container";
+
+    let email_input_header = document.createElement('span');
+    email_input_header.className = "email_input_header";
+    email_input_header.textContent = "Email";
+
+    let email_input = document.createElement('input');
+    email_input.type = "email";
+    email_input.placeholder = "Example@company.com";
+    email_input.className = "option_email_input";
+
+    email_container.appendChild(email_input_header);
+    email_container.appendChild(email_input);
+
+    let phone_container = document.createElement('div');
+    phone_container.className = "option_phone_container";
+
+    let phone_header = document.createElement('span');
+    phone_header.className = "option_phone_header";
+    phone_header.textContent = "Phone Numer";
+
+    let phone_input = document.createElement('input');
+    phone_input.type = "tel";
+    phone_input.placeholder = "(+63) 000 000 0000";
+    phone_input.className = "option_phone_input";
+
+    phone_container.appendChild(phone_header);
+    phone_container.appendChild(phone_input);
+
+    let password_container = document.createElement('div');
+    password_container.className = "option_password_container";
+
+    let password_header = document.createElement('span');
+    password_header.className = "option_password_header";
+    password_header.textContent = "Password";
+
+    let password_input = document.createElement('input');
+    password_input.type = "passowrd";
+    password_input.placeholder = "Create a strong password";
+    password_input.className = "option_password_input";
+
+    password_container.appendChild(password_header);
+    password_container.appendChild(password_input);
+
+    let password_container_confirm = document.createElement('div');
+    password_container_confirm.className = "option_password_container";
+
+    let password_header_confirm = document.createElement('span');
+    password_header_confirm.className = "option_password_header_confirm";
+    password_header_confirm.textContent = "Confirm Password";
+
+    let password_input_confirm = document.createElement('input');
+    password_input_confirm.type = "passowrd";
+    password_input_confirm.placeholder = "Re-enter your password";
+    password_input_confirm.className = "option_password_input_confrim";
+
+    password_container_confirm.appendChild(password_header_confirm);
+    password_container_confirm.appendChild(password_input_confirm);
+
+    form.appendChild(name_wrapper);
+    form.appendChild(email_container);
+    form.appendChild(phone_container);
+    form.appendChild(password_container);
+    form.appendChild(password_container_confirm);
+
+    option_outer_container.appendChild(form)
+
+    replaceable_container.appendChild(option_outer_container);
 }
 
 function handle_buyer_signUp() {
