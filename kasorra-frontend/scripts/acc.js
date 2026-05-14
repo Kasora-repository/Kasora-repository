@@ -309,7 +309,7 @@ function buyer_option(replaceable_container) {
 }
 
 function seller_option(replaceable_container) {
-
+    replaceable_container.innerHTML = "";
 }
 
 function handle_buyer_signUp() {
