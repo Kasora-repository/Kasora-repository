@@ -365,7 +365,7 @@ function buyer_option(replaceable_container) {
 
     let password_input_confirm = document.createElement('input');
     password_input_confirm.type = "passowrd";
-    password_input_confirm.placeholder = "Re-enter your password";
+    password_input_confirm.placeholder = "Re-enter your Password";
     password_input_confirm.className = "option_password_input_confrim";
 
     password_container_confirm.appendChild(password_header_confirm);
@@ -523,4 +523,8 @@ function handle_buyer_signUp() {
 
 function handle_supplier_signUp() {
 
+}
+
+function handle_buyer_signUp(){
+    
 }
